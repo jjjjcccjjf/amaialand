@@ -306,6 +306,38 @@ function contact_agent(email_to,cnt){
   return false;
 
 }
+function contact_vismin(email_to,cnt){
+  var form_data={
+
+    fullname:$("#vfullname"+cnt).val(),
+    email_from:$("#vemail_from"+cnt).val(),
+    subject:$("#vsubject"+cnt).val(),
+    message:$("#vmessage"+cnt).val(),
+    email_to:email_to,
+    contactAgent:"1"
+  };
+  $.ajax({
+    url:"<?php echo bloginfo('template_directory'); ?>/php-functions/contactAgent.php",
+    type:'POST',
+    data:form_data,
+    success:function(msg){
+      if(msg == 'Message Sent!')
+      {
+        $('.inquiry_res').text(msg);
+        $('.inquiry_res').css('color','green');
+
+      }
+      else
+      {
+        $('.inquiry_res').text(msg);
+        $('.inquiry_res').css('color','red');
+
+      }
+    }
+  });
+  return false;
+
+}
 
 </script>
 
