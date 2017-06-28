@@ -201,27 +201,32 @@ $(document).ready(function () {
   var $location = $('select[name=ploc]'); // Location drop down variable
 
   $project_type.change(function(){
+
+    var rfo = 0;
+    if($('#rfo').is(':checked')){
+      rfo = 1;
+    }
+
     var form_data = {
       ptype : $project_type.val()
     };
+
     $.ajax({
-      url:"<?php echo get_home_url(); ?>/ajax_property_finder.php?type=price_range",
+      url:"<?php echo get_home_url(); ?>/ajax_property_finder.php?type=price_range&rfo=" + rfo,
       type:'POST',
       data:form_data,
       success:function(msg){
         $price_range.empty();
         $price_range.append(msg);
-        // console.log(msg);
       }
     });
     $.ajax({
-      url:"<?php echo get_home_url(); ?>/ajax_property_finder.php?type=location",
+      url:"<?php echo get_home_url(); ?>/ajax_property_finder.php?type=location&rfo=" + rfo,
       type:'POST',
       data:form_data,
       success:function(msg){
         $location.empty();
         $location.append(msg);
-        // console.log(msg);
       }
     });
   });
