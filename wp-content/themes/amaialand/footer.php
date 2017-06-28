@@ -192,20 +192,29 @@ $(document).ready(function () {
 <script type="text/javascript">
 $(document).ready(function () {
   /**
-  *  script for property type on change event
-  *  @author: lsalamante@myoptimind.com
+  *  script for property finder stuffs
+  *  @author: @jjjjcccjjf | lsalamante@myoptimind.com
   */
 
   var $project_type = $('select[name=ptype]'); // Property drop down variable
   var $price_range = $('select[name=pprice]'); // Price range drop down variable
   var $location = $('select[name=ploc]'); // Location drop down variable
+  var $rfo = $('#rfo'); // Location drop down variable
 
+  /**
+  * Initialize if rfo variable
+  * could improve this to make into a function but
+  * asdasdashdlakshdkajshdjakshdkjashdakshdjk
+  */
+  var rfo = 0;
+  if($('#rfo').is(':checked')){
+    rfo = 1;
+  }
+
+  /**
+  * set our locations and price range based on the property type
+  */
   $project_type.change(function(){
-
-    var rfo = 0;
-    if($('#rfo').is(':checked')){
-      rfo = 1;
-    }
 
     var form_data = {
       ptype : $project_type.val()
@@ -230,35 +239,38 @@ $(document).ready(function () {
       }
     });
   });
-
   /** end script for property type on change event */
-});
-</script>
 
-<script>
-function check_loc_with_rfo(rfo)
-{
-  //alert(rfo);
-  if($('#rfo').is(':checked'))
-  var rfo = rfo;
-  else
-  var rfo = '0';
-
-  var form_data={
-    rfo : rfo,
-    getLocationsWithRFO:"1"
-  };
-  $.ajax({
-    url:"<?php echo get_home_url(); ?>/getLocationsWithRFO.php",
-    type:'POST',
-    data:form_data,
-    success:function(msg){
-      //alert(msg);
-      $("#ploc").html(msg);
-    }
+  $rfo.change(function(){
+    set_property_type();
   });
 
-}
+  /**
+  * ajax call for setting the property type options
+  * @var [type]
+  */
+  var set_property_type = function(){
+    var is_rfo = 0;
+    if($('#rfo').is(':checked')){
+      is_rfo = 1;
+    }
+
+    $.ajax({
+      url:"<?php echo get_home_url(); ?>/ajax_rfo_checker.php?rfo=" + is_rfo,
+      type:'POST',
+      data:{},
+      success:function(msg){
+        $project_type.empty();
+        $project_type.append(msg);
+      }
+    });
+  }
+  /**
+  * initialize our property type dropdown
+  */
+  set_property_type();
+
+});
 </script>
 
 <script>
