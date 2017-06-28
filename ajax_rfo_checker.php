@@ -47,7 +47,7 @@ foreach ($projects as $post) {
 $options = array_unique($property_arr); # We filter the array because it contains duplicate values
 $html_options = '<option disabled selected>Property Type</option>'; # Placeholder
 
-$options = array_diff( $options, [3,7,6] ); # Remove Condo from the choices
+$options = array_diff( $options, [3,7,6] ); # Remove Condo from the choices and other stuff.
 
 # We create our html dropdown options here
 foreach($options as $option){
