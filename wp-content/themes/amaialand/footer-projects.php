@@ -95,20 +95,46 @@ jQuery(document).ready(function($) {
     closeBtnInside: true,
     fixedContentPos: false,
   });
-  $('.image-link').magnificPopup({
-    // items: [
-    //   {
-    //     src: '#image1', // CSS selector of an element on page that should be used as a popup
-    //     type: 'inline'
-    //   },
-    //   {
-    //     src: '#image2', // CSS selector of an element on page that should be used as a popup
-    //     type: 'inline'
-    //   }
-    // ],
-    // gallery: {
-    //   enabled: true
-    // },
+  $('.image-link1').magnificPopup({
+    gallery: {
+      enabled: true
+    },
+    type:'image',
+    closeBtnInside: true,
+    verticalFit: true,
+    fixedContentPos: false,
+  });
+  $('.image-link2').magnificPopup({
+    gallery: {
+      enabled: true
+    },
+    type:'image',
+    closeBtnInside: true,
+    verticalFit: true,
+    fixedContentPos: false,
+  });
+  $('.image-link3').magnificPopup({
+    gallery: {
+      enabled: true
+    },
+    type:'image',
+    closeBtnInside: true,
+    verticalFit: true,
+    fixedContentPos: false,
+  });
+  $('.image-link4').magnificPopup({
+    gallery: {
+      enabled: true
+    },
+    type:'image',
+    closeBtnInside: true,
+    verticalFit: true,
+    fixedContentPos: false,
+  });
+  $('.image-link5').magnificPopup({
+    gallery: {
+      enabled: true
+    },
     type:'image',
     closeBtnInside: true,
     verticalFit: true,

@@ -83,7 +83,7 @@ get_header('projects');
             </div>
             <div class="project-logo"><img src="<?php the_field('project_logo'); ?>"></div>
             <div class="project-img">
-              <a href="<?php echo get_field('project_image_large'); ?>" class="image-link">
+              <a href="<?php echo get_field('project_image_large'); ?>" class="image-link1">
                 <img src="<?php the_field('project_image'); ?>">
               </a>
               <ul>
@@ -212,7 +212,7 @@ get_header('projects');
             </article>
             <aside>
               <?php if(get_field('location_image') != ''): ?>
-                <a href="<?php echo get_field('location_image'); ?>" class="image-link"><img src="<?php the_field('location_image'); ?>"></a>
+                <a href="<?php echo get_field('location_image'); ?>" class="image-link2"><img src="<?php the_field('location_image'); ?>"></a>
                 <p>Location &amp; Vicinity Map</p>
               <?php endif; ?>
             </aside>
@@ -250,18 +250,18 @@ get_header('projects');
           data-flickity='{ "contain": true, "adaptiveHeight": true, "imagesLoaded": true, "cellAlign": "center", "initialIndex": 2}'>
 
           		<?php $slider_images = get_field('slider_images');
-              $i = 1; # @jjjjcccjjf
+
           		foreach ($slider_images as $image) { ?>
 
               <div class="carousel-cell">
-                <a href="<?php echo $image['photos']; ?>" class="image-link">
+                <a href="<?php echo $image['photos']; ?>" class="image-link4">
                   <div class="propertythb">
                   <!-- <img src="<?php echo $image['photos']; ?>"> -->
                   <?php $featured_image = $image['photos'];
                   if($featured_image == ''): ?>
                     <img src="<?php echo bloginfo('template_directory'); ?>/images/thumb.jpg">
                   <?php else: ?>
-                    <img id='<?= "image" . $i++ # @jjjjcccjjf ?>' src="<?php echo $featured_image; ?>">
+                    <img  src="<?php echo $featured_image; ?>">
                   <?php endif; ?>
                   </div>
                   <h4><?php echo $image['caption']; ?></h4>
@@ -343,7 +343,7 @@ get_header('projects');
                   foreach ($photos as $photo) { ?>
 
                   <div class="carousel-cell">
-                    <a href="<?php echo $photo['photos']; ?>" class="image-link">
+                    <a href="<?php echo $photo['photos']; ?>" class="image-link3">
                       <div class="propertythb">
                       <!-- <img src="<?php echo $photo['photos']; ?>"> -->
                       <?php $featured_image = $photo['photos'];
@@ -406,7 +406,7 @@ get_header('projects');
             <ul>
               <?php $construction_updates = get_field('construction_updates');
               foreach ($construction_updates as $updates) { ?>
-                <li><a href="<?php echo $updates['image']; ?>" class="image-link"><?php echo $updates['title']; ?></a></li>
+                <li><a href="<?php echo $updates['image']; ?>" class="image-link5"><?php echo $updates['title']; ?></a></li>
 
               <?php } ?>
             </ul>
