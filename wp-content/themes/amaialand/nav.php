@@ -1,14 +1,13 @@
 <?php
 
 /**
- * [return_condo_type description]
+ * We need this to determine what get var to append
+ * @author: @jjjjcccjjf | lsalamante@myoptimind.com
  * @param  int    $p_id   parent id that we need
  * @return string         either '?type=m', '?type=h', or ''
  */
 function return_condo_type($p_id)
 {
-  # @jjjjcccjjf
-  # We need this to determine what get var to append
   $proj_terms = get_children($p_id);
 
   $p_children = [];
