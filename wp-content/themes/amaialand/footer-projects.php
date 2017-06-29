@@ -25,9 +25,8 @@ display: none!important;
     <article class="col3">
       <h6>Contact Us</h6>
       <p>
-        If you are in the Philippines call us:<br>
         <a href="tel:09778526242">+63977-85-AMAIA</a><br>
-        <a href="http://askamie.amaialand.com/" target="_blank">FOR OUTSIDE METRO MANILA ></a>
+        <a href="mailto:kayakona@amaialand.com">kayakona@amaialand.com</a><br>
       </p>
     </article>
     <article class="col3">
