@@ -1,10 +1,10 @@
-<?php 
+<?php
 
 /* Template Name: Home */
 
 get_header(); ?>
 
-    <?php if(get_field('change_background_to_slider') != 1): ?>  
+    <?php if(get_field('change_background_to_slider') != 1): ?>
       <section class="homefeat" style="background: url(<?php the_field('featured_photo');?>) no-repeat center top fixed; background-size: cover;">
         <div class="wrapper">
           <div class="propertysearch-home">
@@ -14,7 +14,7 @@ get_header(); ?>
               <li>
                 <select name="ptype">
                   <option disabled selected value="">Project Type</option>
-                  <?php $proj_type = get_terms(array('taxonomy'=>'project_type','hide_empty'=>false)); 
+                  <?php $proj_type = get_terms(array('taxonomy'=>'project_type','hide_empty'=>false));
                   foreach ($proj_type as $type) {
                     echo '<option value="'.$type->term_id.'">'.$type->name.'</option>';
                   }?>
@@ -23,7 +23,7 @@ get_header(); ?>
               <li>
                 <select name="pprice">
                   <option disabled selected value="">Price Range</option>
-                  <?php /*$price_range = get_terms(array('taxonomy'=>'price_range','hide_empty'=>false)); 
+                  <?php /*$price_range = get_terms(array('taxonomy'=>'price_range','hide_empty'=>false));
                   foreach ($price_range as $price) {
                     echo '<option value="'.$price->term_id.'">'.$price->name.'</option>';
                   }*/
@@ -31,11 +31,11 @@ get_header(); ?>
                 </select>
               </li>
               <li>
-                
+
 
                 <select name="ploc" id="ploc">
                   <option disabled selected value="">Location</option>
-                  <?php $location = get_terms(array('taxonomy'=>'location','hide_empty'=>false)); 
+                  <?php $location = get_terms(array('taxonomy'=>'location','hide_empty'=>false));
                   foreach ($location as $loc) {
                     if($loc->parent != 0)
                       echo '<option value="'.$loc->term_id.'">'.$loc->name.'</option>';
@@ -54,18 +54,20 @@ get_header(); ?>
       </section>
     <?php elseif(get_field('change_background_to_slider') == 1): ?>
     <section class="homefeatslider">
-    
+
       <!-- <div class="rslides_container"> -->
           <ul class="rslides" id="rslides">
               <?php
-        
+
               $sliders = get_field('slider_photos');
 
               foreach($sliders as $slider) {
 
               ?>
               <li>
-                  <img src="<?php echo $slider['photo']; ?>">
+                  <a href="<?php echo $slider['page_link']; ?>">
+                    <img src="<?php echo $slider['photo']; ?>">
+                  </a>
               </li>
 
               <?php } ?>
@@ -80,7 +82,7 @@ get_header(); ?>
                 <li>
                   <select name="ptype">
                     <option disabled selected value="">Project Type</option>
-                    <?php $proj_type = get_terms(array('taxonomy'=>'project_type','hide_empty'=>false)); 
+                    <?php $proj_type = get_terms(array('taxonomy'=>'project_type','hide_empty'=>false));
                     foreach ($proj_type as $type) {
                       echo '<option value="'.$type->term_id.'">'.$type->name.'</option>';
                     }?>
@@ -89,7 +91,7 @@ get_header(); ?>
                 <li>
                   <select name="pprice">
                     <option disabled selected value="">Price Range</option>
-                    <?php /*$price_range = get_terms(array('taxonomy'=>'price_range','hide_empty'=>false)); 
+                    <?php /*$price_range = get_terms(array('taxonomy'=>'price_range','hide_empty'=>false));
                     foreach ($price_range as $price) {
                       echo '<option value="'.$price->term_id.'">'.$price->name.'</option>';
                     }*/
@@ -97,11 +99,11 @@ get_header(); ?>
                   </select>
                 </li>
                 <li>
-                  
+
 
                   <select name="ploc" id="ploc">
                     <option disabled selected value="">Location</option>
-                    <?php $location = get_terms(array('taxonomy'=>'location','hide_empty'=>false)); 
+                    <?php $location = get_terms(array('taxonomy'=>'location','hide_empty'=>false));
                     foreach ($location as $loc) {
                       if($loc->parent != 0)
                         echo '<option value="'.$loc->term_id.'">'.$loc->name.'</option>';
@@ -120,29 +122,29 @@ get_header(); ?>
         </div>
     </section>
     <?php endif; ?>
-      
+
 
       <section class="whatsnew">
         <h3 style="float:left;"><span>Don't Miss</span> What's New on Amaia<a href="<?php the_permalink(1930); ?>">View All</a></h3>
          <!-- <aside class="coverleft"></aside>
           <aside class="coverright"></aside>-->
-         
+
           <div style="clear: both;"></div>
         <div class="carousel"
           data-flickity='{ "contain": true, "adaptiveHeight": true, "imagesLoaded": true, "cellAlign": "center", "initialIndex": 2 }'>
 
           <?php
-          
-          $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-    
-    
-          $args = array( 'post_type' => 'news_and_events', 'posts_per_page' => '8', 'paged' => $paged,  'orderby' => 'post_date', 'order' => 'DESC' );
-          
-          $loopb = new WP_Query( $args );
-        
-          if($loopb->have_posts()){ 
 
-          while ( $loopb->have_posts() ) : $loopb->the_post(); 
+          $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+
+          $args = array( 'post_type' => 'news_and_events', 'posts_per_page' => '8', 'paged' => $paged,  'orderby' => 'post_date', 'order' => 'DESC' );
+
+          $loopb = new WP_Query( $args );
+
+          if($loopb->have_posts()){
+
+          while ( $loopb->have_posts() ) : $loopb->the_post();
 
           ?>
 
@@ -159,13 +161,13 @@ get_header(); ?>
               <h4><?php the_title(); ?></h4>
             </a>
           </div>
-        
-        <?php endwhile; 
+
+        <?php endwhile;
 
       }
 
       wp_reset_query(); ?>
-        
+
         </div>
       </section>
 
@@ -180,14 +182,14 @@ get_header(); ?>
               $location_page_id = 347;
               $cnt = 1 ;
 
-              $args = array( 
-                    'child_of' => $location_page_id, 
+              $args = array(
+                    'child_of' => $location_page_id,
                     'parent' => $location_page_id,
                     'depth' => 1 ,
-                    'sort_column' => 'post_title', 
+                    'sort_column' => 'post_title',
                     'sort_order' => 'asc',
                     'posts_per_page' => '-1',
-                    
+
               );
 
               // 'tax_query' => array(
@@ -200,12 +202,12 @@ get_header(); ?>
               $location_loc = get_pages( $args );
               $show_guide = array();
                 foreach($location_loc as $l_loc)
-                {                  
+                {
 
                   if(get_field('disable_in_homepage',$l_loc->ID) != 1 )
                     array_push($show_guide,$l_loc->ID);
-                }  
-                  
+                }
+
                 ?>
                 <?php foreach ($show_guide as $guide_id) { ?>
                     <li id="li_fragment_<?php echo $cnt; ?>"><a href="#fragment-<?php echo $cnt; ?>"><?php echo get_the_title($guide_id); ?></a></li>
@@ -216,9 +218,9 @@ get_header(); ?>
 
               <?php
 
-              $cnt = 1 ; 
+              $cnt = 1 ;
 
-              foreach ($show_guide as $guide_id) { ?>                  
+              foreach ($show_guide as $guide_id) { ?>
                   <div id="fragment-<?php echo $cnt; ?>" class="ui-tabs-panel">
                     <article>
                       <h4><?php echo get_the_title($guide_id); ?></h4>
@@ -236,11 +238,11 @@ get_header(); ?>
                     <section>
                       <h4>Projects in <?php echo get_the_title($guide_id); ?></h4>
                       <ul>
-                      <?php $projects_nearby = get_field('nearby_projects',$guide_id); 
-                        
+                      <?php $projects_nearby = get_field('nearby_projects',$guide_id);
+
                        foreach ($projects_nearby as $proj) {
                       ?>
-                        
+
                         <li>
                           <a href="<?php echo get_permalink($proj->ID);?>">
                             <!-- <img src="<?php echo get_the_post_thumbnail_url($proj->ID); ?>"> -->
@@ -255,18 +257,16 @@ get_header(); ?>
                         </li>
                       <?php
                       }?>
-                        
+
                       </ul>
-                    </section> 
+                    </section>
                   </div>
-                  <?php $cnt++; 
+                  <?php $cnt++;
                 }
               ?>
 
             </section>
         </div>
       </section>
-      
-      <?php get_footer(); ?>
 
-      
+      <?php get_footer(); ?>
