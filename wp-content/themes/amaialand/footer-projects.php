@@ -249,7 +249,120 @@ $(".close").click(function(){
   $(".modalDialog").modal('hide');
 });
 </script>
+<script type="text/javascript">
+$(document).ready(function () {
+  /**
+  *  script for property finder stuffs
+  *  @author: @jjjjcccjjf | lsalamante@myoptimind.com
+  */
 
+  var $project_type = $('select[name=ptype]'); // Property drop down variable
+  var $price_range = $('select[name=pprice]'); // Price range drop down variable
+  var $location = $('select[name=ploc]'); // Location drop down variable
+  var $rfo = $('#rfo'); // Location drop down variable
+
+  /**
+  * set our locations and price range based on the property type
+  */
+  $project_type.change(function(){
+
+    /**
+    * Initialize if rfo variable
+    * could improve this to make into a function but
+    * asdasdashdlakshdkajshdjakshdkjashdakshdjk
+    */
+    var rfo = 0;
+    if($('#rfo').is(':checked')){
+      rfo = 1;
+    }
+
+    var form_data = {
+      ptype : $project_type.val()
+    };
+
+    $.ajax({
+      url:"<?php echo get_home_url(); ?>/ajax_property_finder.php?type=price_range&rfo=" + rfo,
+      type:'POST',
+      data:form_data,
+      success:function(msg){
+        $price_range.empty();
+        $price_range.append(msg);
+        // console.log(msg);
+      }
+    });
+    $.ajax({
+      url:"<?php echo get_home_url(); ?>/ajax_property_finder.php?type=location&rfo=" + rfo,
+      type:'POST',
+      data:form_data,
+      success:function(msg){
+        $location.empty();
+        $location.append(msg);
+        // console.log(msg);
+      }
+    });
+  });
+  /** end script for property type on change event */
+
+  /**
+  * set our locations based on price range
+  */
+  $price_range.change(function(){
+
+    var rfo = 0;
+    if($('#rfo').is(':checked')){
+      rfo = 1;
+    }
+
+    var form_data = {
+      ptype : $project_type.val(),
+      pprice : $price_range.val()
+    };
+
+    $.ajax({
+      url:"<?php echo get_home_url(); ?>/ajax_location_changer.php?rfo=" + rfo,
+      type:'POST',
+      data:form_data,
+      success:function(msg){
+        $location.empty();
+        $location.append(msg);
+        // console.log(msg);
+      }
+    });
+
+  });
+  /** end script for price range on change event */
+
+  $rfo.change(function(){
+    set_property_type();
+  });
+
+  /**
+  * ajax call for setting the property type options
+  * @var [type]
+  */
+  var set_property_type = function(){
+    var is_rfo = 0;
+    if($('#rfo').is(':checked')){
+      is_rfo = 1;
+    }
+
+    $.ajax({
+      url:"<?php echo get_home_url(); ?>/ajax_rfo_checker.php?rfo=" + is_rfo,
+      type:'POST',
+      data:{},
+      success:function(msg){
+        $project_type.empty();
+        $project_type.append(msg);
+      }
+    });
+  }
+  /**
+  * initialize our property type dropdown
+  */
+  set_property_type();
+
+});
+</script>
 
 <script src="https://use.fontawesome.com/108c9331e1.js"></script>
 <script type="text/javascript">
