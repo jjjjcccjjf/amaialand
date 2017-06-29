@@ -112,7 +112,7 @@ get_header(); ?>
 
                 </li>
                 <li>
-                  <input type="checkbox" name="rfo" id= "rfo" value="1" onclick="check_loc_with_rfo(this.value);"> <label>Ready for Occupancy</label>
+                  <label class="pointer"><input class="pointer" type="checkbox" name="rfo" id= "rfo" value="1" onclick="check_loc_with_rfo(this.value);"> Ready for Occupancy</label>
                 </li>
                 <li><input type="submit" name="find" value=""></li>
               </form>
