@@ -8,7 +8,7 @@
 
       <section class="content">
         <div class="pagewrapper2">
-          <h3>Vision Mission</h3>
+          <h3>Management Team</h3>
           <div class="content2col">
             <article>
               <p><?php the_content(); ?></p>
@@ -19,8 +19,8 @@
               <p><a href="<?php the_permalink(22); ?>">Read More</a></p>
               <br>
               <img src="<?php //echo get_the_post_thumbnail_url(2); ?>">
-              <h4>Management Team</h4>
-              <p><a href="<?php the_permalink(4161); ?>">Read More</a></p>
+              <h4>Vision Mission</h4>
+              <p><a href="<?php the_permalink(2); ?>">Read More</a></p>
             </aside>
           </div>
         </div>

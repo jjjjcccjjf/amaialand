@@ -17,6 +17,10 @@
               <img src="<?php //echo get_the_post_thumbnail_url(2); ?>">
               <h4>Vision Mission</h4>
               <p><a href="<?php the_permalink(2); ?>">Read More</a></p>
+              <br>
+              <img src="<?php //echo get_the_post_thumbnail_url(2); ?>">
+              <h4>Management Team</h4>
+              <p><a href="<?php the_permalink(4161); ?>">Read More</a></p>
             </aside>
           </div>
         </div>
