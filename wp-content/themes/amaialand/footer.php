@@ -202,19 +202,19 @@ $(document).ready(function () {
   var $rfo = $('#rfo'); // Location drop down variable
 
   /**
-  * Initialize if rfo variable
-  * could improve this to make into a function but
-  * asdasdashdlakshdkajshdjakshdkjashdakshdjk
-  */
-  var rfo = 0;
-  if($('#rfo').is(':checked')){
-    rfo = 1;
-  }
-
-  /**
   * set our locations and price range based on the property type
   */
   $project_type.change(function(){
+
+    /**
+    * Initialize if rfo variable
+    * could improve this to make into a function but
+    * asdasdashdlakshdkajshdjakshdkjashdakshdjk
+    */
+    var rfo = 0;
+    if($('#rfo').is(':checked')){
+      rfo = 1;
+    }
 
     var form_data = {
       ptype : $project_type.val()
@@ -227,6 +227,7 @@ $(document).ready(function () {
       success:function(msg){
         $price_range.empty();
         $price_range.append(msg);
+        // console.log(msg);
       }
     });
     $.ajax({
@@ -236,6 +237,7 @@ $(document).ready(function () {
       success:function(msg){
         $location.empty();
         $location.append(msg);
+        // console.log(msg);
       }
     });
   });
@@ -350,9 +352,9 @@ $(document).ready(function(){
   // $("div#lz_chat_overlay_main").attr('style', 'display:none!important;');
 
 });
-window.setInterval(function(){
-  $("div#lz_eye_catcher").attr('style','display:none!important;');
-}, 1000);
+// window.setInterval(function(){
+//   $("div#lz_eye_catcher").attr('style','display:none!important;');
+// }, 1000);
 </script>
 <script>
 $('#chat').click(function(){
@@ -363,7 +365,7 @@ $('#chat').click(function(){
   // void(lz_chat_change_state(true,false));
 });
 </script>
-<div id="livezilla_tracking" style="display:none"></div>
+<div id="livezilla_tracking" style="visibility:hidden"></div>
 <script type="text/javascript">
 var script = document.createElement("script");
 script.async=true;
