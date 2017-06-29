@@ -87,7 +87,7 @@
       <!-- Vismin -->
       <section class="agents">
         <div class="pagewrapper2">
-          <h3>Meet our VisMin specialists</h3>
+          <h3>For VisMin</h3>
           <ul class="flex-container">
             <?php $vismin = get_field('vismin');
               $cnt = 1;
