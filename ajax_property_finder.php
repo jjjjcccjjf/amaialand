@@ -57,13 +57,24 @@ if(@$_GET['type'] == 'price_range'){
 elseif(@$_GET['type'] == 'location'){
   $options = array_unique($location_arr); # We filter the array because it contains duplicate values
   $html_options = '<option disabled selected>Location</option>'; # Placeholder
+
+  $options = array_diff( $options, [17] ); # Remove Batangas from the choices because F😍CK batangas. JK XD
+
 }
 
-# We create our html dropdown options here
+# We transfer our array so an associative one
 foreach($options as $option){
   $term = get_term($option);
   $title = $term->name;
-  $html_options .= "<option value='$option'>$title</option>";
+
+  $ordered_options[$title] = $option;
+}
+
+ksort($ordered_options); # Alphabetically sort our array because hail D3str0y3r 🙏🙏
+
+# We create our html dropdown options here
+foreach($ordered_options as $key => $val){
+  $html_options .= "<option value='$val'>$key</option>";
 }
 
 # Finally, return the elements and it will be appended to corresponding dropdown
