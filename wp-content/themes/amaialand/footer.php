@@ -243,6 +243,35 @@ $(document).ready(function () {
   });
   /** end script for property type on change event */
 
+  /**
+  * set our locations based on price range
+  */
+  $price_range.change(function(){
+
+    var rfo = 0;
+    if($('#rfo').is(':checked')){
+      rfo = 1;
+    }
+
+    var form_data = {
+      ptype : $project_type.val(),
+      pprice : $price_range.val()
+    };
+
+    $.ajax({
+      url:"<?php echo get_home_url(); ?>/ajax_location_changer.php?rfo=" + rfo,
+      type:'POST',
+      data:form_data,
+      success:function(msg){
+        $location.empty();
+        $location.append(msg);
+        // console.log(msg);
+      }
+    });
+
+  });
+  /** end script for price range on change event */
+
   $rfo.change(function(){
     set_property_type();
   });
