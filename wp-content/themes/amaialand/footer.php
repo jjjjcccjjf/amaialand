@@ -377,7 +377,7 @@ function contact_vismin(email_to,cnt){
 $(document).ready(function(){
   // alert('test');
   $("div#lz_eye_catcher").attr('style','display:none!important;');
-  $("div#lz_overlay_chat").attr('style', 'display:none!important;');
+  // $("div#lz_overlay_chat").attr('style', 'display:none!important;');
   // $("div#lz_chat_overlay_main").attr('style', 'display:none!important;');
 
 });
@@ -389,12 +389,12 @@ $(document).ready(function(){
 $('#chat').click(function(){
   // alert('clicked');
   // $("div#lz_eye_catcher").attr('style','display:block!important;position: fixed; height: 100px; width: 300px; overflow: hidden; z-index: 9999; cursor: auto; margin: 0px; opacity: 1.1; left: 1029px; bottom: 0px; right: auto; top: auto;');
-  $("div#lz_overlay_chat").attr('style', 'display: block !important; position: fixed; height: 31px; width: 300px; overflow: hidden; z-index: 9999; cursor: move; margin: 0px; opacity: 1.1; left: 1583px; border-radius: 6px 6px 0px 0px; bottom: 0px; right: auto; top: auto;');
+  // $("div#lz_overlay_chat").attr('style', 'display: block !important; position: fixed; height: 31px; width: 300px; overflow: hidden; z-index: 9999; cursor: move; margin: 0px; opacity: 1.1; left: 1583px; border-radius: 6px 6px 0px 0px; bottom: 0px; right: auto; top: auto;');
   // $("div#lz_eye_catcher,div#lz_overlay_chat").css('display','block');
   // void(lz_chat_change_state(true,false));
 });
 </script>
-<div id="livezilla_tracking" style="visibility:hidden"></div>
+<div id="livezilla_tracking"></div>
 <script type="text/javascript">
 var script = document.createElement("script");
 script.async=true;
