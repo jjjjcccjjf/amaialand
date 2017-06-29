@@ -105,7 +105,7 @@ get_header(); ?>
                     <option disabled selected value="">Location</option>
                     <?php $location = get_terms(array('taxonomy'=>'location','hide_empty'=>false));
                     foreach ($location as $loc) {
-                      if($loc->parent != 0)
+                      if($loc->parent != 0 && $loc->slug != 'batangas' /* remove batanggas as pec client*/ )
                         echo '<option value="'.$loc->term_id.'">'.$loc->name.'</option>';
                     }?>
                   </select>
