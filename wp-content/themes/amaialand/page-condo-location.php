@@ -127,36 +127,7 @@ foreach($terms as $term){
     </div>
   </div>
 
-  <?php }else{ ?>
-    <div class="modelhouse">
-      <div class="pagewrapper3">
-        <article>
-          <div class="model-overview">
-            <h3><a href="<?php echo get_permalink($page_id); ?>" ><?php the_title(); ?></a></h3>
-            <hr>
-            <h4><?php the_field('tagline',$page_id); ?></h4>
-            <p><?php the_field('short_description',$page_id); ?></p>
-            <ul>
-              <li><label>Price Range:</label><?php the_field('price_range',$page_id); ?></li>
-              <li><label>Unit Sizes:</label><?php the_field('unit_sizes',$page_id); ?></li>
-            </ul>
-            <p class="btnfull"><a href="<?php echo get_permalink($page_id); ?>" >View Details</a></p>
-          </div>
-          <aside>
-            <?php $featured_image = get_field('list_image', $page_id);
-            if($featured_image == ''): ?>
-            <img src="<?php echo bloginfo('template_directory'); ?>/images/image3-01.jpg">
-          <?php else: ?>
-            <a href="<?php echo  $featured_image; ?>" class="image-link">
-              <img src="<?php echo $featured_image; ?>">
-            </a>
-          <?php endif; ?>
-        </aside>
-      </article>
-    </div>
-  </div>
-  <?php
-} # end else
+  <?php }
 
 } # end foreach
 
