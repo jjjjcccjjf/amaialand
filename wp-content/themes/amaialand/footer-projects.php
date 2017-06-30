@@ -402,34 +402,78 @@ function check_loc_with_rfo(rfo)
 
 }
 </script>
+<?php 
+foreach(wp_get_post_terms(wp_get_post_parent_id(get_the_ID()), "location") as $loc) 
+{ 
+  $location_name = $loc->name;
+}
+echo $location_name;
+echo get_the_ID();
 
+$mandaue = array(74, 3534);
+
+?>
 <!-- livezilla.net code Amaia -->
 <script>
-$(document).ready(function(){
-  // alert('test');
-  //         $("div#lz_eye_catcher").attr('style','display:none!important;');
-  //    $("div#lz_overlay_chat").attr('style', 'display:none!important;');
-  // $("div#lz_chat_overlay_main").attr('style', 'display:none!important;');
-});
+
+window.setInterval(function(){
+  $("#lz_overlay_chat").attr('class','left-chat');
+  $("#lz_eye_catcher").attr('style','display:none!important;');
+}, 1);
+
 </script>
-<script>
-// $('#chat').click(function(){
-//   alert('clicked');
-//   $("div#lz_eye_catcher").attr('style','display:block!important;position: fixed; height: 100px; width: 300px; overflow: hidden; z-index: 9999; cursor: auto; margin: 0px; opacity: 1.1; left: 1029px; bottom: 0px; right: auto; top: auto;');
-//   $("div#lz_overlay_chat").attr('style', 'display: block!important; position: fixed; height: 31px; width: 300px; overflow: hidden; z-index: 9999; cursor: move; margin: 0px; opacity: 1.1; left: 1029px; border-radius: 6px 6px 0px 0px; bottom: 0px; right: auto; top: auto;');
-//   });
-</script>
+
+<?php if(get_the_ID() == 3534 || $location_parent_id == 74): ?>
+
+<!-- livezilla.net code (MANDAUE) -->
 <div id="livezilla_tracking" style="display:none"></div>
 <script type="text/javascript">
-var script = document.createElement("script");
-script.async=true;
-script.type="text/javascript";
-var src = "http://www.chat2.ayalalandmarketing.com/amaia/server.php?a=9f060&rqst=track&output=jcrpt&hg=P2FsaXNpP3N1cHBvcnQ_&hcgs=MQ__&htgs=MQ__&ovlc=IzczYmUyOA__&ovlt=V2UgYXJlIE9ubGluZS4gQ2hhdCB3aXRoIHVzLg__&ovloo=MQ__&ovlapo=MQ__&eca=Mg__&ecmb=MA__&eci=aHR0cDovL2NoYXQuYXlhbGFsYW5kbWFya2V0aW5nLmNvbS91cGxvYWRzL2J1YmJsZXMvcmJnLWNoYXQtYmFyLWFtYWlhLnBuZw__&ecio=aHR0cDovLw__&nse="+Math.random();
-setTimeout("script.src=src;document.getElementById('livezilla_tracking').appendChild(script)",1);
+var script = document.createElement("script");script.async=true;script.type="text/javascript";var src = "http://chat2.ayalalandmarketing.com/amaia/server.php?a=b9452&rqst=track&output=jcrpt&intgroup=QW1haWEgU3RlcHMgTWFuZGF1ZQ__&hg=Pw__&ovlc=IzczYmUyOA__&eca=MQ__&ecsp=MQ__&nse="+Math.random();setTimeout("script.src=src;document.getElementById('livezilla_tracking').appendChild(script)",1);
 </script>
 <noscript>
-  <img src="http://www.chat2.ayalalandmarketing.com/amaia/server.php?a=9f060&amp;rqst=track&amp;output=nojcrpt" width="0" height="0" style="visibility:hidden;" alt="">
+  <img src="http://chat2.ayalalandmarketing.com/amaia/server.php?a=b9452&amp;rqst=track&amp;output=nojcrpt" width="0" height="0" style="visibility:hidden;" alt="">
 </noscript>
+<!-- http://www.livezilla.net -->
+
+<?php //elseif($) ?>
+<?php endif; ?>
+
+
+<!-- GENERAL Livezilla -->
+<?php if($location_name == "Luzon"): ?>
+<div id="livezilla_tracking" style="display:none"></div>
+<script type="text/javascript">
+var script = document.createElement("script");script.async=true;script.type="text/javascript";var src = "http://chat2.ayalalandmarketing.com/amaia/server.php?a=9b51f&rqst=track&output=jcrpt&intgroup=QW1haWEgTGFuZA__&hg=Pw__&ovlc=IzczYmUyOA__&eca=MQ__&ecsp=MQ__&nse="+Math.random();setTimeout("script.src=src;document.getElementById('livezilla_tracking').appendChild(script)",1);
+</script>
+<noscript>
+<img src="http://chat2.ayalalandmarketing.com/amaia/server.php?a=9b51f&amp;rqst=track&amp;output=nojcrpt" width="0" height="0" style="visibility:hidden;" alt="">
+</noscript>
+
+<!-- ILOILO Livezilla -->
+<?php elseif(wp_get_post_parent_id(get_the_ID()) == 96): ?>
+<!-- livezilla.net code (Iloilo) -->
+<div id="livezilla_tracking" style="display:none"></div>
+<script type="text/javascript">
+var script = document.createElement("script");script.async=true;script.type="text/javascript";var src = "http://chat2.ayalalandmarketing.com/amaia/server.php?a=e80b6&rqst=track&output=jcrpt&intgroup=QW1haWEgU2NhcGVzIElsb2lsbw__&hg=Pw__&ovlc=IzczYmUyOA__&eca=MQ__&ecsp=MQ__&nse="+Math.random();setTimeout("script.src=src;document.getElementById('livezilla_tracking').appendChild(script)",1);
+</script>
+<noscript>
+<img src="http://chat2.ayalalandmarketing.com/amaia/server.php?a=e80b6&amp;rqst=track&amp;output=nojcrpt" width="0" height="0" style="visibility:hidden;" alt="">
+</noscript>
+<!-- http://www.livezilla.net -->
+
+<!-- GENERAL Livezilla -->
+<?php else: ?>
+<!-- livezilla.net code (NORTHPOINT and CAPITOL) -->
+<div id="livezilla_tracking" style="display:none"></div>
+<script type="text/javascript">
+var script = document.createElement("script");script.async=true;script.type="text/javascript";var src = "http://chat2.ayalalandmarketing.com/amaia/server.php?a=df744&rqst=track&output=jcrpt&intgroup=Tm9ydGhQb2ludCBhbmQgQ2FwaXRvbA__&hg=Pw__&ovlc=IzczYmUyOA__&eca=MQ__&ecsp=MQ__&nse="+Math.random();setTimeout("script.src=src;document.getElementById('livezilla_tracking').appendChild(script)",1);
+</script>
+<noscript>
+<img src="http://chat2.ayalalandmarketing.com/amaia/server.php?a=df744&amp;rqst=track&amp;output=nojcrpt" width="0" height="0" style="visibility:hidden;" alt="">
+</noscript>
+<!-- http://www.livezilla.net -->
+<?php endif; ?>
+
 <!-- http://www.livezilla.net -->
 
 </body>
