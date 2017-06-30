@@ -28,8 +28,8 @@
 
       <!-- Latest Articles -->
       <section class="whatsnew projectsnearby">
-        <h3 style="float:left;">Latest Articles</h3>
-        <p class="see-all"><a href="<?php the_permalink(2000); ?>" style="float:right;margin-right: 3%;">See All</a></p>
+        <h3 style="float:left;">Latest Articles <a href="<?php the_permalink(2000); ?>">See All</a></h3>
+       
         <div style="clear: both;"></div>
 
         <aside class="coverleft"></aside>
@@ -47,7 +47,7 @@
                   array(
                       'taxonomy' => 'news_events_cat',
                       'field' => 'slug',
-                      'terms' =>  'updates',
+                      'terms' =>  'blog',
                   )
                   ) );
 

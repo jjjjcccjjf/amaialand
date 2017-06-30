@@ -9,13 +9,15 @@ get_header('projects');
 <section class="modelhouses-list">
 
   <div class="pagewrapper3 pagetitle">
-    <?php  $location = get_the_title(get_the_ID()); ?>
+    <?php  $location = get_the_title(get_the_ID());
+    $get_var = return_condo_type(get_the_ID()); # This function can be found in nav.php
+     ?>
     <h1>Affordable
-      <?php if($_GET['type'] == 'm')
+      <?php if($get_var == '?type=m')
       echo "Mid-Rise";
-      elseif($_GET['type'] == 'h')
+      elseif($get_var == '?type=h')
       echo "High-Rise";
-      else
+      elseif ($get_var == '')
       echo "Mid-Rise and High-Rise";
       ?>
       Condominiums in <?php echo $location; ?></h1>

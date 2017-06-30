@@ -96,7 +96,7 @@ function return_condo_type($p_id)
                                       if($term->name == 'Metro Manila')
                                       {
 
-                                        echo '<p><a href="'.get_permalink($p_id). $condo_var .'">'.get_the_title($p_id);
+                                        echo '<p><a href="'.get_permalink($p_id). '">'.get_the_title($p_id);
 
                                         if(in_array($p_id, $withrfo))
                                           echo ' <span>(RFO)</span> ';
@@ -124,7 +124,7 @@ function return_condo_type($p_id)
                                     {
                                       if($term->name == 'Luzon')
                                       {
-                                        echo '<p><a href="'.get_permalink($p_id). $condo_var . '">'.get_the_title($p_id);
+                                        echo '<p><a href="'.get_permalink($p_id).  '">'.get_the_title($p_id);
 
                                         if(in_array($p_id, $withrfo))
                                           echo ' <span>(RFO)</span> ';
@@ -152,7 +152,7 @@ function return_condo_type($p_id)
                                     {
                                       if($term->name == 'Visayas')
                                       {
-                                        echo '<p><a href="'.get_permalink($p_id). $condo_var .'">'.get_the_title($p_id);
+                                        echo '<p><a href="'.get_permalink($p_id). '">'.get_the_title($p_id);
 
                                         if(in_array($p_id, $withrfo))
                                           echo ' <span>(RFO)</span> ';
@@ -224,7 +224,7 @@ function return_condo_type($p_id)
                                     {
                                       if($term->name == 'Metro Manila')
                                       {
-                                        echo '<p><a href="'.get_permalink($p_id). $condo_var .'">'.get_the_title($p_id);
+                                        echo '<p><a href="'.get_permalink($p_id). '">'.get_the_title($p_id);
 
                                         if(in_array($p_id, $withrfo))
                                           echo ' <span>(RFO)</span> ';
