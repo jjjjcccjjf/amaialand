@@ -11,13 +11,13 @@ get_header('projects');
   <div class="pagewrapper3 pagetitle">
     <?php  $location = get_the_title(get_the_ID());
     $get_var = return_condo_type(get_the_ID()); # This function can be found in nav.php
-     ?>
+    ?>
     <h1>Affordable
-      <?php if($get_var == '?type=m')
+      <?php if($_GET['type'] == 'm')
       echo "Mid-Rise";
-      elseif($get_var == '?type=h')
+      elseif($_GET['type'] == 'h')
       echo "High-Rise";
-      elseif ($get_var == '')
+      else
       echo "Mid-Rise and High-Rise";
       ?>
       Condominiums in <?php echo $location; ?></h1>
@@ -67,12 +67,15 @@ $args = array('hide_empty'=>false);
 
 $terms = wp_get_post_terms( $page_id, 'project_type' ,$args );
 foreach($terms as $term){
-  /**
-   * Skip condo slug because it's a parent slug, it's redundant and makes our items duplicate!
-   */
-  if($term->slug == 'condo')
-  continue;
-  ?>
+
+
+  if(!isset($_GET['type'])){
+    /**
+    * Skip condo slug because it's a parent slug, it's redundant and makes our items duplicate!
+    */
+    if($term->slug == 'condo')
+    continue;
+    ?>
 
     <div class="modelhouse">
       <div class="pagewrapper3">
@@ -102,8 +105,66 @@ foreach($terms as $term){
     </div>
   </div>
 
-  <?php
+  <?php  }else{
+    if($_GET['type'] == 'h' && $term->name == 'High-Rise Condominiums'){ ?>
 
+      <div class="modelhouse">
+        <div class="pagewrapper3">
+          <article>
+            <div class="model-overview">
+              <h3><a href="<?php echo get_permalink($page_id); ?>" ><?php the_title(); ?></a></h3>
+              <hr>
+              <h4><?php the_field('tagline',$page_id); ?></h4>
+              <p><?php the_field('short_description',$page_id); ?></p>
+              <ul>
+                <li><label>Price Range:</label><?php the_field('price_range',$page_id); ?></li>
+                <li><label>Unit Sizes:</label><?php the_field('unit_sizes',$page_id); ?></li>
+              </ul>
+              <p class="btnfull"><a href="<?php echo get_permalink($page_id); ?>" >View Details</a></p>
+            </div>
+            <aside>
+              <?php $featured_image = get_field('list_image', $page_id);
+              if($featured_image == ''): ?>
+              <img src="<?php echo bloginfo('template_directory'); ?>/images/image3-01.jpg">
+            <?php else: ?>
+              <a href="<?php echo  $featured_image; ?>" class="image-link">
+                <img src="<?php echo $featured_image; ?>">
+              </a>
+            <?php endif; ?>
+          </aside>
+        </article>
+      </div>
+    </div>
+    <?php } elseif($_GET['type'] == 'm' && $term->name == 'Mid-Rise Condominiums'){ ?>
+      <div class="modelhouse">
+        <div class="pagewrapper3">
+          <article>
+            <div class="model-overview">
+              <h3><a href="<?php echo get_permalink($page_id); ?>" ><?php the_title(); ?></a></h3>
+              <hr>
+              <h4><?php the_field('tagline',$page_id); ?></h4>
+              <p><?php the_field('short_description',$page_id); ?></p>
+              <ul>
+                <li><label>Price Range:</label><?php the_field('price_range',$page_id); ?></li>
+                <li><label>Unit Sizes:</label><?php the_field('unit_sizes',$page_id); ?></li>
+              </ul>
+              <p class="btnfull"><a href="<?php echo get_permalink($page_id); ?>" >View Details</a></p>
+            </div>
+            <aside>
+              <?php $featured_image = get_field('list_image', $page_id);
+              if($featured_image == ''): ?>
+              <img src="<?php echo bloginfo('template_directory'); ?>/images/image3-01.jpg">
+            <?php else: ?>
+              <a href="<?php echo  $featured_image; ?>" class="image-link">
+                <img src="<?php echo $featured_image; ?>">
+              </a>
+            <?php endif; ?>
+          </aside>
+        </article>
+      </div>
+    </div>
+    <?php }
+  } # end detect if there's get
 } # end foreach
 
 ?>
